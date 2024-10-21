@@ -88,9 +88,8 @@ We welcome contributions to improve the plugin. To contribute:
 3. Create a pull request to have your changes reviewed.
 
 ## Authors
-
-- [@Pragmatic Coders](https://www.github.com/Pragmatic Coders)
-- [@jan-wegner](https://www.github.com/jan-wegner)
+- [@pragmaticcoders](https://www.github.com/pragmaticcoders)
+- [@Jan-Wegner](https://www.github.com/jan-wegner)
 
 ## License
 
