@@ -1,0 +1,374 @@
+.pragmaticcoders-nch {
+    position: relative
+}
+
+.pragmaticcoders-nch #nch-bell-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer
+}
+
+@media all and (max-width: 1120px) {
+    .pragmaticcoders-nch #nch-bell-icon {
+        transform:translateY(1px)
+    }
+}
+
+.pragmaticcoders-nch #nch-bell-icon:after {
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    content: "";
+    height: 0;
+    pointer-events: none;
+    left: 50%;
+    transform:  translateX(-50%);
+    width: 0;
+    z-index: 10;
+    display: none;
+    position: absolute;
+    bottom: -18px;
+}
+
+.pragmaticcoders-nch.open #nch-bell-icon:after {
+    display: block;
+}
+
+.pragmaticcoders-nch #nch-bell-icon #nch-bell-button .icon {
+    width: 26px;
+    height: 26px;
+    position: relative;
+}
+
+.pragmaticcoders-nch #nch-bell-icon #nch-bell-button .icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.pragmaticcoders-nch #nch-bell-icon #nch-bell-button #nch-notification-count {
+    position: absolute;
+    display: block;
+    top: -6px;
+    right: -6px;
+    background: #00a571;
+    font-weight: 700;
+    color: white;
+    border-radius: 50%;
+    padding: 3px;
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+    width: 16px;
+    height: 16px
+}
+
+.pragmaticcoders-nch #nch-notifications {
+    background-color: #fff;
+    box-shadow: 0px 0px 15px rgba(154,158,164,0.3);
+    max-width: 300px;
+    position: absolute;
+    margin-top: 10px;
+    right: -10px;
+    transform-origin: top right;
+    min-width: 300px;
+    max-width: 370px;
+}
+
+.pragmaticcoders-nch.open #nch-notifications {
+    opacity:  1;
+}
+
+
+.pragmaticcoders-nch #nch-notifications ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 55vh;
+    overflow: hidden;
+    overflow-y: auto
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item {
+    border-bottom: 1px solid #dce0e6;
+    font-size: 14px;
+    line-height: 1;
+    padding: 15px;
+    -webkit-transition: all ease-in-out 250ms;
+    -moz-transition: all ease-in-out 250ms;
+    transition: all ease-in-out 250ms;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    opacity: 1
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item:before {
+    display: block;
+    content: '';
+    width: 5px;
+    height: 100%;
+    background-color: var(--item-color);
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .notification-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-indent: -99999px;
+    z-index: 10
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .item-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .item-top .notification-icon {
+    margin-right: 10px;
+    margin-top: 2px;
+    color: var(--item-color)
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .item-top .notification-icon i {
+    opacity: 0.4
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .item-top .notification-title {
+    display: inline-block;
+    line-height: 1.2;
+    overflow: hidden;
+    font-weight: 700;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    flex-grow: 1;
+    text-decoration: none;
+    margin-right: 20px
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .item-top .mark-read-btn {
+    cursor: pointer;
+    z-index: 11;
+    position: absolute;
+    right: 15px
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .item-top .mark-read-btn:hover {
+    color: #00a571
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .notification-meta {
+    font-size: 9px;
+    opacity: 1;
+    display: block;
+    text-transform: uppercase;
+    margin-left: 25px;
+    margin-top: 3px
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .notification-meta .tag {
+    letter-spacing: 1px
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .notification-meta .post-type,.pragmaticcoders-nch #nch-notifications ul li.notification-item .notification-meta .tag {
+    background-color: #00a571;
+    color: #fff;
+    letter-spacing: 0;
+    padding: 1px 3px;
+    margin-right: 3px
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .mark-read-btn {
+    margin-left: auto;
+    display: flex;
+    align-items: center
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item .mark-read-btn i {
+    font-size: 20px
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item.read {
+    color: #777;
+    background-color: #f0f0f0
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item.read:before {
+    background-color: #cfcfcf
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item.read .item-top .notification-icon {
+    color: #a0a0a0
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item.read .item-top .mark-read-btn {
+    display: none
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item.read .notification-meta .post-type,.pragmaticcoders-nch #nch-notifications ul li.notification-item.read .notification-meta .tag {
+    color: #f0f0f0;
+    background-color: #a0a0a0
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item.animate {
+    transform-origin: top center;
+    height: 0;
+    transform: scale(0);
+    overflow: hidden;
+    padding: 0;
+    filter: blur(40px);
+    opacity: 0
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item.hidden {
+    display: none
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item:last-of-type {
+    border: 0
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item:hover {
+    background-color: #f2f2f2
+}
+
+.pragmaticcoders-nch #nch-notifications ul li.notification-item:hover .notification-icon i {
+    opacity: 1
+}
+
+.pragmaticcoders-nch #nch-notifications .nch-info {
+    opacity: 0.6;
+    text-align: center;
+    padding: 15px 15px
+}
+
+.pragmaticcoders-nch #nch-notifications .nch-info i {
+    font-size: 32px;
+    margin-bottom: 5px;
+    opacity: 0.6;
+    margin-bottom: 15px;
+}
+
+.pragmaticcoders-nch #nch-notifications .nch-info span {
+    display: block;
+    font-size: 12px;
+    line-height: 13px
+}
+
+.pragmaticcoders-nch #nch-notifications .notification-tools {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0
+}
+
+.pragmaticcoders-nch #nch-notifications .notification-tools .action {
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center
+}
+
+.pragmaticcoders-nch #nch-notifications .notification-tools .action i {
+    margin-right: 5px
+}
+
+.pragmaticcoders-nch #nch-notifications .notification-tools .action span {
+    pointer-events: none
+}
+
+.pragmaticcoders-nch #nch-notifications .notification-tools .action:hover {
+    border-color: #00a571;
+    background-color: #d0d0d0
+}
+
+.pragmaticcoders-nch #nch-notifications .notification-tools .action:focus,.pragmaticcoders-nch #nch-notifications .notification-tools .action:active {
+    background-color: #00a571;
+    color: #fff
+}
+
+.pragmaticcoders-nch #nch-notifications .pragmaticcoders-logo-badge {
+    padding: 5px 5px 0px 5px;
+    text-align: center;
+    font-size: 8px;
+    background-color: #f0f0f0
+}
+
+.pragmaticcoders-nch #nch-notifications .pragmaticcoders-logo-badge .badge-content a {
+    display: block;
+    opacity: 0.5;
+    color: #000;
+    text-decoration: none;
+}
+
+.pragmaticcoders-nch #nch-notifications .pragmaticcoders-logo-badge .badge-content a img {
+    max-height: 14px;
+    margin-left: 5px;
+    transform: translateY(4px);
+    filter: grayscale(1)
+}
+
+.pragmaticcoders-nch #nch-notifications .pragmaticcoders-logo-badge .badge-content:hover a {
+    opacity: 1
+}
+
+.pragmaticcoders-nch #nch-notifications .pragmaticcoders-logo-badge .badge-content:hover a img {
+    filter: grayscale(0)
+}
+
+.pragmaticcoders-nch #nch-notifications #clear-notifications {
+    margin-top: 10px;
+    text-align: center;
+    padding: 8px 10px;
+    background-color: #00a571;
+    color: #fff;
+    display: block;
+    font-size: 12px;
+    cursor: pointer;
+    -webkit-transition: all ease-in-out 250ms;
+    -moz-transition: all ease-in-out 250ms;
+    transition: all ease-in-out 250ms
+}
+
+.pragmaticcoders-nch #nch-notifications #clear-notifications:hover {
+    background-color: #00724e
+}
+
+@media all and (max-width: 1120px) {
+    .pragmaticcoders-nch #nch-notifications {
+        position:fixed;
+        left: 30px;
+        top: 60px;
+        width: calc( 100% - 60px);
+        max-width: initial
+    }
+}
+
+@media all and (max-width: 1120px) {
+    .pragmaticcoders-nch #nch-notifications:after {
+        right:91px
+    }
+}
+
+.pragmaticcoders-nch.has-notifications #nch-bell-button:hover i {
+    color: #00a571 !important
+}
+
+.pragmaticcoders-nch.has-notifications #nch-notifications .nch-info {
+    display: none
+}
