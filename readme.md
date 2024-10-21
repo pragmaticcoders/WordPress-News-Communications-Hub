@@ -1,7 +1,7 @@
-# Pragmatic Coders News Communications Hub
+# Pragmatic Coders WordPress News Communications Hub
 
 ## Overview
-The **Pragmatic Coders News Communications Hub** is a flexible WordPress plugin designed to help you easily manage and display customizable notifications and news updates on your site. With robust admin options, Elementor icons integration, and flexible styling, this plugin provides all the tools you need to keep users informed and engaged.
+The **Pragmatic Coders WordPress News Communications Hub** is a flexible WordPress plugin designed to help you easily manage and display customizable notifications and news updates on your site. With robust admin options, Elementor icons integration, and flexible styling, this plugin provides all the tools you need to keep users informed and engaged.
 
 ## Key Features
 - **Custom Notifications**: Add, edit, and manage notifications directly from the WordPress admin interface. You can display any type of post or page, including custom post types.
