@@ -26,6 +26,8 @@ The Pragmatic Coders News Communications Hub is a flexible WordPress plugin that
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Configure the settings and start adding notifications from the **Pragmatic Coders** > **News Communications Hub** menu in the WordPress admin area.
 
+**Important**: If you have a caching plugin installed with JavaScript minification or file concatenation enabled, make sure to add `nch-script.js` to the exclusion list. This ensures that the script functions correctly without interference from caching.
+
 == Frequently Asked Questions ==
 
 = Can I choose different post types for notifications? =

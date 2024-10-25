@@ -97,23 +97,11 @@ function pragmaticcoders_nch_page() {
                         return;
                     }
 
-                    $transients = [
-                        'nch_first_visit_notifications',
-                        'timeout_nch_first_visit_notifications',
-                    ];
-
                     if (isset($_POST['regenerate_transients'])) {
                         require_once plugin_dir_path(__FILE__) . '../pragmaticcoders-news-communications-hub.php';
-                        
-                        pc_error_log("--- * FIRST VISIT TRANSIENTS REGENERATION * ---");
-                        
-                        foreach ($transients as $transient) {
-                            if (get_transient($transient)) {
-                                delete_transient($transient);
-                                pc_error_log("Old First visit transients removed");
-                            }
-                        }
-
+    
+                        pc_error_log("--- * FIRST VISIT TRANSIENTS MANUAL REGENERATION * ---");
+                        nch_clear_first_visit_transients();
                         nch_generate_first_visit_data();
                         pc_error_log("--- * ---");
                         echo '<div class="notice notice-success is-dismissible"><p>First visit transients have been regenerated.</p></div>';
@@ -148,6 +136,8 @@ function pragmaticcoders_nch_page() {
     </div>
     <?php
 }
+
+
 
 /**
  * Registers settings for different sections including general, custom notifications, CRON settings, and appearance options.
@@ -835,6 +825,37 @@ function nch_all_read_message_callback() {
 function nch_show_logo_callback() {
     $value = get_option('nch_show_logo', 1);
     echo '<input type="checkbox" name="nch_show_logo" value="1" ' . checked(1, $value, false) . ' /> ' . __('Show Pragmatic Coders Logo', 'pragmaticcoders');
+}
+
+
+/**
+ * Clears first visit transients and regenerates initial data.
+ *
+ * This function deletes any existing transients for the first visit notifications
+ * and then generates fresh data for the first visit. It is called upon updating
+ * any of the specified options in the plugin settings.
+ *
+ * @return void
+ */
+function nch_update_first_visit_data() {
+    pc_error_log("--- # FIRST VISIT TRANSIENTS REGENERATION ON SAVE # ---");
+    nch_clear_first_visit_transients();
+    nch_generate_first_visit_data();
+    pc_error_log("--- # ---");
+}
+
+$options = [
+    'nch_update_types',
+    'nch_first_visit_display_limit',
+    'nch_first_visit_post_types',
+    'nch_localstorage_first_visit_lifetime',
+    'nch_transient_key_first_visit_lifetime',
+    'nch_post_icons',
+    'nch_custom_notifications',
+];
+
+foreach ($options as $option) {
+    add_action("update_option_{$option}", 'nch_update_first_visit_data');
 }
 
 /**

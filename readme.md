@@ -1,7 +1,7 @@
-# Pragmatic Coders WordPress News Communications Hub
+# Pragmatic Coders News Communications Hub
 
 ## Overview
-The **Pragmatic Coders WordPress News Communications Hub** is a flexible WordPress plugin designed to help you easily manage and display customizable notifications and news updates on your site. With robust admin options, Elementor icons integration, and flexible styling, this plugin provides all the tools you need to keep users informed and engaged.
+The **Pragmatic Coders News Communications Hub** is a flexible WordPress plugin designed to help you easily manage and display customizable notifications and news updates on your site. With robust admin options, Elementor icons integration, and flexible styling, this plugin provides all the tools you need to keep users informed and engaged.
 
 ## Key Features
 - **Custom Notifications**: Add, edit, and manage notifications directly from the WordPress admin interface. You can display any type of post or page, including custom post types.
@@ -16,9 +16,12 @@ The **Pragmatic Coders WordPress News Communications Hub** is a flexible WordPre
 
 ## Installation
 1. Download or clone the repository.
-2. Upload the `PragmaticCoders-News-Communications-Hub` folder to the `/wp-content/plugins/` directory.
+2. Upload the `WordPress-News-Communications-Hub-main` folder to the `/wp-content/plugins/` directory.
 3. Activate the plugin via the **Plugins** menu in WordPress.
 4. Navigate to **Pragmatic Coder** > **News Communications Hub** to configure your notifications.
+####
+**Important**: If you have a caching plugin installed with JavaScript minification or file concatenation enabled, make sure to add `nch-script.js` to the exclusion list. This ensures that the script functions correctly without interference from caching.
+
 
 ## Usage
 ### Adding New Notifications
@@ -88,8 +91,9 @@ We welcome contributions to improve the plugin. To contribute:
 3. Create a pull request to have your changes reviewed.
 
 ## Authors
+
 - [@pragmaticcoders](https://www.github.com/pragmaticcoders)
-- [@Jan-Wegner](https://www.github.com/jan-wegner)
+- [@jan-wegner](https://www.github.com/jan-wegner)
 
 ## License
 

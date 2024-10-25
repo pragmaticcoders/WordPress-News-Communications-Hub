@@ -357,13 +357,12 @@
         width: calc( 100% - 60px);
         max-width: initial
     }
-}
 
-@media all and (max-width: 1120px) {
-    .pragmaticcoders-nch #nch-notifications:after {
-        right:91px
+    .pragmaticcoders-nch.open #nch-bell-icon:after {
+        bottom: -25px;
     }
 }
+
 
 .pragmaticcoders-nch.has-notifications #nch-bell-button:hover i {
     color: #00a571 !important

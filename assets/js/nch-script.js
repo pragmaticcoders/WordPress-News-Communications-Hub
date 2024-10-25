@@ -290,7 +290,7 @@ jQuery(document).ready(function($) {
             html += generateItemHTML(item);
         });
 
-        html += '<div class="nch-info">' + allReadMessage + '</div>';
+        html += '<div class="nch-info" style="display: none;">' + allReadMessage + '</div>';
         html += '</ul>';
 
         if (showPClogo == 1) {
@@ -424,10 +424,6 @@ jQuery(document).ready(function($) {
             if (linkHostname && linkHostname !== currentHostname) {
                 $(this).attr('target', '_blank');
             }
-
-            setTimeout(function() {
-                //$(this).css('pointer-events', 'none');
-            }.bind(this), 10);
         }
     });
 
@@ -507,25 +503,25 @@ jQuery(document).ready(function($) {
         $('.pragmaticcoders-nch').toggleClass('open');
     });
 
-$(document).on('click', function(event) {
-    var $target = $(event.target);
-    if ($('.pragmaticcoders-nch').hasClass('open') 
-        && !$target.closest('.pragmaticcoders-nch').length 
-        && !$target.closest('#show-hide').length) {
-        $('.pragmaticcoders-nch').removeClass('open');
-        $('#nch-notifications').hide();
-    }
-});
+    $(document).on('click', function(event) {
+        var $target = $(event.target);
+        if ($('.pragmaticcoders-nch').hasClass('open') 
+            && !$target.closest('.pragmaticcoders-nch').length 
+            && !$target.closest('#show-hide').length) {
+            $('.pragmaticcoders-nch').removeClass('open');
+            $('#nch-notifications').hide();
+        }
+    });
 
     jQuery(window).on("load", function () {
-        if (!isBot()) {
-            fetchNotifications();
-        }
-
         var currentCount = parseInt($('#nch-notification-count').text());
         if (currentCount > 0) {
             $('.pragmaticcoders-nch').addClass('has-notifications');
         }
     });
+
+    if (!isBot()) {
+        fetchNotifications();
+    }
 
 });

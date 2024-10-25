@@ -79,7 +79,7 @@ function nch_enqueue_scripts()
         "nch-script",
         PLUGIN_URL . "assets/js/nch-script.js",
         ["jquery"],
-        "1.0.2",
+        "1.0.3",
         true
     );
     wp_localize_script("nch-script", "nch_data", [
@@ -99,7 +99,7 @@ function nch_enqueue_scripts()
         "nch-style",
         PLUGIN_URL . "assets/css/nch-style.css",
         [],
-        "1.0.0"
+        "1.0.1"
     );
 }
 add_action("wp_enqueue_scripts", "nch_enqueue_scripts");
@@ -360,6 +360,30 @@ function nch_generate_first_visit_data()
     nch_fetch_posts_and_notifications();
 }
 add_action("nch_generate_first_visit_data", "nch_generate_first_visit_data");
+
+/**
+ * Clears old "first visit" transients if they exist and generates fresh data.
+ *
+ * This function iterates over specified transients related to first-time visit notifications.
+ * If a transient is found, it deletes it and logs the action. After clearing old transients,
+ * it generates new data using `nch_generate_first_visit_data()`.
+ *
+ * @return void
+ */
+
+function nch_clear_first_visit_transients() {
+    $transients = [
+        'nch_first_visit_notifications',
+        'timeout_nch_first_visit_notifications',
+    ];
+
+    foreach ($transients as $transient) {
+        if (get_transient($transient)) {
+            delete_transient($transient);
+            pc_error_log("First visit transients removed");
+        }
+    }
+}
 
 /**
  * Registers the CRON job for generating first visit data.
@@ -634,6 +658,43 @@ class PragmaticCoders_NCH_Widget extends WP_Widget
 }
 
 /**
+ * Check if popular cache plugin is active
+ *
+ * @return bool
+ */
+function is_cache_plugin_active()
+{
+    include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+    
+    $cache_plugins = [
+        'w3-total-cache/w3-total-cache.php',           // W3 Total Cache
+        'wp-super-cache/wp-cache.php',                 // WP Super Cache
+        'wp-fastest-cache/wpFastestCache.php',         // WP Fastest Cache
+        'litespeed-cache/litespeed-cache.php',         // LiteSpeed Cache
+        'autoptimize/autoptimize.php',                 // Autoptimize
+        'hummingbird-performance/wp-hummingbird.php',  // Hummingbird Performance
+        'sg-cachepress/sg-cachepress.php',             // SiteGround Optimizer
+        'comet-cache/comet-cache.php',                 // Comet Cache
+        'breeze/breeze.php',                           // Breeze Cache
+        'cache-enabler/cache-enabler.php',             // Cache Enabler
+        'wp-rocket/wp-rocket.php',                     // WP Rocket
+        'swift-performance-lite/performance.php',      // Swift Performance Lite
+        'fvm/fvm.php',                                 // Fast Velocity Minify
+        'hyper-cache/plugin.php',                      // Hyper Cache
+        'cachify/cachify.php',                         // Cachify
+        'wot-cache/wot-cache.php',                     // WOT Cache
+    ];
+    
+    foreach ($cache_plugins as $plugin) {
+        if (is_plugin_active($plugin)) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+/**
  * Displays a welcome message after the plugin is installed.
  *
  * @return void
@@ -660,10 +721,28 @@ function nch_welcome_message()
             <a href="<?php echo admin_url(
                 "admin.php?page=pragmaticcoders-nch"
             ); ?>"><?php _e(
-    "adding your first notification",
-    "pragmaticcoders"
-); ?></a>!
+                    "adding your first notification",
+                    "pragmaticcoders"
+                    ); ?></a>!
         </p>
+       <?php if (is_cache_plugin_active()) : ?>
+        <hr>
+        <p>
+            <span style="color: black; font-weight: bold;">
+                ⚠️ <?php _e(
+                    "Potential issue detected",
+                    "pragmaticcoders"
+                ); ?>: 
+            </span>
+            <span>
+                <?php _e(
+                    "The active caching plugin may interfere with News Communications Hub. Please make sure to exclude <code>nch-script.js</code> from JavaScript optimization in the cache settings.",
+                    "pragmaticcoders"
+                ); ?>
+            </span>
+        </p>
+        <?php endif; ?>
+
     </div>
     <?php
 }
